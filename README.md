@@ -77,3 +77,30 @@ Note: Enabling this option can be a security risk, especially when combined with
 `isJavascriptEnabled` (boolean, default: true)
 
 If set to `true`, DOMPDF will automatically insert JavaScript code contained within `<script type="text/javascript"> ... </script>` tags.
+
+## Usage
+
+1. Add DOMPDF to your php class
+
+```php
+use IctSolutions\CodeIgniterDompdf\Pdf;
+```
+2. Add `misc` helper and add new `Pdf` instance in your method
+
+```php
+helper('misc');
+
+$pdf = new Pdf();
+```
+
+3. Add view for your pdf file and use DOMPDF `loadView` method.
+
+```php
+ $pdf->loadView('example_view', $data);
+```
+
+4. Create pdf file.
+
+```php
+$pdf->stream("example.pdf");
+```
