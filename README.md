@@ -85,11 +85,9 @@ If set to `true`, DOMPDF will automatically insert JavaScript code contained wit
 ```php
 use IctSolutions\CodeIgniterDompdf\Pdf;
 ```
-2. Add `misc` helper and add new `Pdf` instance in your method
+2. Add new `Pdf` instance in your method
 
 ```php
-helper('misc');
-
 $pdf = new Pdf();
 ```
 
