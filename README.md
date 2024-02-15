@@ -139,3 +139,8 @@ $dompdf->stream("welcome.pdf", array("Attachment"=>0));
 
 In this example, 'pdf_view' would be a view file that contains your HTML structure, and $data would be any data you want to pass to the view. The output would be streamed to the client with the filename welcome.pdf. If you set the Attachment option to 1, the PDF file would be downloaded by the client rather than displayed in the browser.
 Please modify and adjust these examples according to your actual project and codebase.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
