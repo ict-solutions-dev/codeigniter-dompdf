@@ -77,3 +77,70 @@ Note: Enabling this option can be a security risk, especially when combined with
 `isJavascriptEnabled` (boolean, default: true)
 
 If set to `true`, DOMPDF will automatically insert JavaScript code contained within `<script type="text/javascript"> ... </script>` tags.
+
+## Usage
+
+First, we need to load the Pdf Library:
+
+```php
+$dompdf = new \IctSolutions\CodeIgniterDompdf\Pdf();
+```
+
+After creating an instance of Dompdf, we can setup the PDF properties:
+
+```php
+$dompdf->set_option('isRemoteEnabled', TRUE);
+$dompdf->setPaper('A4', 'landscape');
+```
+
+Then, we use it to load Html content:
+
+```php
+$html = '<h1>Welcome to PDF Generator</h1>';
+$dompdf->loadHtml($html);
+```
+
+We can render the Html content:
+
+```php
+$dompdf->render();
+```
+
+And finally, we can stream the output:
+
+```php
+$dompdf->stream('welcome.pdf', array("Attachment"=>0)); // stream to client side
+```
+
+## Example: Creating a CodeIgniter Project with Dompdf
+
+Here are general guideline steps to include Dompdf library in CodeIgniter:
+
+1. Install the library through Composer in your project:
+
+```shell
+composer require ictsolutions/codeigniter-dompdf
+```
+
+2. When you need to create a PDF, load the library:
+
+```php
+$dompdf = new \IctSolutions\CodeIgniterDompdf\Pdf();
+```
+
+3. Use the library to create PDFs. The following example shows creating a PDF from a view:
+
+```php
+$htmlContent = $this->load->view('pdf_view',$data,TRUE);
+$dompdf->loadHtml($htmlContent);
+$dompdf->render();
+$dompdf->stream("welcome.pdf", array("Attachment"=>0));
+```
+
+In this example, 'pdf_view' would be a view file that contains your HTML structure, and $data would be any data you want to pass to the view. The output would be streamed to the client with the filename welcome.pdf. If you set the Attachment option to 1, the PDF file would be downloaded by the client rather than displayed in the browser.
+Please modify and adjust these examples according to your actual project and codebase.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
